@@ -12,12 +12,16 @@
     "tachyons": "^4.11.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint .  --ext .js"
+    "lint": "react-scripts eslint .  --ext .js",
+    "start-sw": "http-server ./build"
   },
+  "homepage": "https://luiswalderdorff.github.io/wetterapplikation",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -34,6 +38,8 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^6.8.0"
+    "eslint": "^6.8.0",
+    "gh-pages": "^2.2.0",
+    "http-server": "^0.12.1"
   }
 }
