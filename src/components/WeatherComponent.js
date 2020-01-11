@@ -7,7 +7,7 @@ class WeatherComponent extends Component {
 			clicked: false
 		}
 	}
-
+	// Used to switch from simple to detailed side
 	changeClickedState = () => {
 		if (this.state.clicked === false) {
 			this.setState({clicked: true})
@@ -18,14 +18,16 @@ class WeatherComponent extends Component {
 
 	render() {
 	const { city, index, removeCity } = this.props;
+	/*Only renders this once a city name is fetched, to avoid errors*/
 		if (city.name) {
+			/*every item on the list has two sides, simple and detailed. Are switched by clicking */
 			if (this.state.clicked === false) {
 				return (
 				<div className="flex items-center pa3 justify-around ba b--dotted ma3">
 					<div className="flex flex-column w-50 tc"> 
-					<a href="#" onClick={this.changeClickedState}>
+					<div onClick={this.changeClickedState}>
 						<div className="city-name tc b pa1">{ city.name } (mehr Info)</div>
-					</a>
+					</div>
 						<div className="weather-description tc pa1">{city.weather.description}</div>
 					</div>
 					<div className="flex items-center w-50 justify-center">
@@ -33,16 +35,16 @@ class WeatherComponent extends Component {
 						<div className="temperature tc pa2">{city.temperature}°C</div>
 					</div>
 					<div className="pointer b">
-						<a onClick={() => removeCity(index)}>×</a>
+						<div onClick={() => removeCity(index)}>×</div>
 					</div>
 				</div>
 				)
 			} else {
 				return (
 				<div className="flex-wrap items-center pa3 justify-around ba b--dotted ma3">
-					<a href="#" onClick={this.changeClickedState}>
+					<div onClick={this.changeClickedState}>
 						<div className="city-name tc b pa1">{ city.name } (weniger Info)</div>
-					</a>
+					</div>
 					<div className="weather-description tc pa1">{city.weather.description}</div>
 					<div className="temperature tc pa2">Temperatur: {city.temperature}°C</div>
 					<div className="tc pa2">Gefühlt: {city.feelsLike}°C</div>
@@ -50,7 +52,7 @@ class WeatherComponent extends Component {
 					<div className="tc pa2">Max: {city.maxTemp}°C</div>
 					<div className="tc pa2">Luftdruck: {city.pressure} hPA</div>
 					<div className="tc pa2">Luftfeuchtigkeit: {city.humidity}%</div>
-					<div className="pa2 tc b"><a className="pointer" onClick={() => removeCity(index)}>×</a></div>
+					<div className="pa2 tc b"><div className="pointer" onClick={() => removeCity(index)}>×</div></div>
 				</div>
 				)
 			}

@@ -1,10 +1,14 @@
 import React from "react";
 
-const SearchBar = ({ getCity, onInputChange }) => {
+const SearchBar = ({ getCity }) => {
+	//clear input field after pressing button
+	function clearFields() {
+	     document.getElementById("myInput").value = "";
+	}
 	return (
 		<div>
-			<input type="text" placeholder="Stadt hinzufügen" onChange={onInputChange} />
-			<button onClick={getCity}>Hinzufügen</button>
+			<input id="myInput" type="text" placeholder="Stadt hinzufügen" />
+			<button id="myBtn" onClick={() => {getCity(document.getElementById('myInput').value); clearFields()}}>OK</button>
 		</div>
 	)
 }
