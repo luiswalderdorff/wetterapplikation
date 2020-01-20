@@ -10,16 +10,13 @@ class WeatherDetailed extends Component {
 	}
 	// Used to switch from simple to detailed side
 	getCity = () => {
-		let paramCity = "";
-		paramCity = this.props.match.params.city;
-		if (paramCity.length > 0) {
+		const paramCity = this.props.location.state.city.name;
 			fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${paramCity}&units=metric&lang=de&APPID=761b91c920e9201fba7da16e3aa16206`)
 			.then(response => response.json())
 			.then(response => {
 				this.setState({ weather: response });
 			})
 			.catch(err => console.log(err));
-		}
 	}
 
 	componentDidMount() {
