@@ -1,18 +1,10 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 
 class WeatherComponent extends Component {
 	constructor() {
 		super();
 		this.state = {
-			clicked: false
-		}
-	}
-	// Used to switch from simple to detailed side
-	changeClickedState = () => {
-		if (this.state.clicked === false) {
-			this.setState({clicked: true})
-		} else {
-			this.setState({clicked: false})
 		}
 	}
 
@@ -21,41 +13,22 @@ class WeatherComponent extends Component {
 	/*Only renders this once a city name is fetched, to avoid errors*/
 		if (city.name) {
 			/*every item on the list has two sides, simple and detailed. Are switched by clicking */
-			if (this.state.clicked === false) {
-				return (
-				<div className="flex items-center pa3 justify-around ba b--dotted ma3">
-					<div className="flex flex-column w-50 tc"> 
-					<div onClick={this.changeClickedState}>
-						<div className="city-name tc b pa1">{ city.name } (mehr Info)</div>
-					</div>
-						<div className="weather-description tc pa1">{city.weather.description}</div>
-					</div>
-					<div className="flex items-center w-50 justify-center">
-						<img src={`http://openweathermap.org/img/w/${city.weather.icon}.png`} alt="A weather icon" />
-						<div className="temperature tc pa2">{city.temperature}°C</div>
-					</div>
-					<div className="pointer b">
-						<div onClick={() => removeCity(index)}>×</div>
-					</div>
+			return (
+			<div className="dib w-90 ba b--black-10 flex flex-column items-center ma3 w-40-ns w-25-l shadow-5 weather-component">
+				<div className="flex justify-between w-100 pa3">
+					<div></div>
+					<div className="dib">{ city.name }</div>
+					<div className="pointer b dib" onClick={() => removeCity(index)}>×</div>
 				</div>
-				)
-			} else {
-				return (
-				<div className="flex-wrap items-center pa3 justify-around ba b--dotted ma3">
-					<div onClick={this.changeClickedState}>
-						<div className="city-name tc b pa1">{ city.name } (weniger Info)</div>
-					</div>
-					<div className="weather-description tc pa1">{city.weather.description}</div>
-					<div className="temperature tc pa2">Temperatur: {city.temperature}°C</div>
-					<div className="tc pa2">Gefühlt: {city.feelsLike}°C</div>
-					<div className="tc pa2">Min: {city.minTemp}°C</div>
-					<div className="tc pa2">Max: {city.maxTemp}°C</div>
-					<div className="tc pa2">Luftdruck: {city.pressure} hPA</div>
-					<div className="tc pa2">Luftfeuchtigkeit: {city.humidity}%</div>
-					<div className="pa2 tc b"><div className="pointer" onClick={() => removeCity(index)}>×</div></div>
-				</div>
-				)
-			}
+				<Link to={{
+					pathname: `/${city.name}`,
+					state: {city: city}
+				}}>
+					<img src={`http://openweathermap.org/img/wn/${city.weather.icon}@2x.png`} alt="A weather icon" className="h4" />
+				</Link>
+				<div className="pa3">{city.temperature}°C</div>
+			</div>
+			)
 		} else {
 			return (
 				<div>Hi</div>

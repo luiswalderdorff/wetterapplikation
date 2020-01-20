@@ -6,9 +6,9 @@ const SearchBar = ({ getCity }) => {
 	     document.getElementById("myInput").value = "";
 	}
 	return (
-		<div>
-			<input id="myInput" type="text" placeholder="Stadt hinzufügen" />
-			<button id="myBtn" onClick={() => {getCity(document.getElementById('myInput').value); clearFields()}}>OK</button>
+		<div className="flex flex-wrap justify-center items-center">
+			<input id="myInput" type="text" placeholder="Stadt hinzufügen" className="b pa2 ba bg-transparent ma4" />
+			<button id="myBtn" className="f6 link dim br-pill ba bw1 ph3 pv2 dib black" onClick={() => {getCity(document.getElementById('myInput').value); clearFields()}}>OK</button>
 		</div>
 	)
 }

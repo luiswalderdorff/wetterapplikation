@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
 html {
 	height: 100%;
 }
@@ -7,11 +9,31 @@ body {
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
-	background: linear-gradient(to bottom left, #5390ed, rgba(83, 144, 237, 0));
-	background-size:contain
+	/*background: linear-gradient(to bottom left, #5390ed, rgba(83, 144, 237, 0));*/
+	background-color:  #2934B5;
+	background-size:contain;
+	font-weight: bold;
+	color: white;
+	font-family: 'Roboto', sans-serif;
 }
 
 a {
   color: inherit; 
   text-decoration: inherit; 
+}
+
+.weather-component {
+	background-color: #194AA3;
+	/*background: linear-gradient(to bottom left, #104798, #155cc6);*/
+}
+
+input {
+	color: white;
+}
+input::placeholder{
+  color: white;
+}
+
+.detailed-view {
+	font-size: 1.2rem;
 }

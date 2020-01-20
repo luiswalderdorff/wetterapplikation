@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
-import Title from "./components/Title";
 import WeatherWrapper from "./components/WeatherWrapper";
+import WeatherDetailed from "./components/WeatherDetailed";
 import SearchBar from "./components/SearchBar";
+import {
+	BrowserRouter,
+	Route,
+	Switch
+} from "react-router-dom";
 
 class App extends Component {
 
@@ -48,22 +53,34 @@ class App extends Component {
 
 		// Press enter to start search
 		var input = document.getElementById("myInput");
-		input.addEventListener("keyup", function(event) {
-		  if (event.keyCode === 13) {
-		    event.preventDefault();
-		    document.getElementById("myBtn").click();
-		  }
-		});
+		if (input) {
+			input.addEventListener("keyup", function(event) {
+			  if (event.keyCode === 13) {
+			    event.preventDefault();
+			    console.log("Hi")
+			    document.getElementById("myBtn").click();
+			  }
+			});
+		}
 	}
 
   render() {
   	const { weatherArray } = this.state;
     return(
-      <div className="App flex flex-column items-center avenir">
-        <Title />
-        <WeatherWrapper weatherArray={ weatherArray } removeCity={ this.removeCity } />
-        <SearchBar getCity={ this.getCity } onInputChange={ this.onInputChange } />
-      </div>
+    	<BrowserRouter>
+	      <div>
+	        <Switch>
+		        <Route exact path="/" render={(props) => (
+		        	<div className="App flex flex-column items-center avenir">
+		        		<SearchBar getCity={ this.getCity } onInputChange={ this.onInputChange } />
+			        	<WeatherWrapper weatherArray={ weatherArray } removeCity={ this.removeCity } />
+		        	</div>
+		        	)} 
+		        />
+		        <Route path="/:city" component={WeatherDetailed} />
+	        </Switch>
+	      </div>
+      </BrowserRouter>
     )
   }
 }
