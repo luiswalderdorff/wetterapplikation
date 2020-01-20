@@ -21,7 +21,7 @@ class WeatherComponent extends Component {
 					<div className="pointer b dib" onClick={() => removeCity(index)}>×</div>
 				</div>
 				<Link to={{
-					pathname: `/${city.name}`,
+					pathname: `${process.env.PUBLIC_URL}/${city.name}`,
 					state: {city: city}
 				}}>
 					<img src={`http://openweathermap.org/img/wn/${city.weather.icon}@2x.png`} alt="A weather icon" className="h4" />

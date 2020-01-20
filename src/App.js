@@ -57,7 +57,6 @@ class App extends Component {
 			input.addEventListener("keyup", function(event) {
 			  if (event.keyCode === 13) {
 			    event.preventDefault();
-			    console.log("Hi")
 			    document.getElementById("myBtn").click();
 			  }
 			});
@@ -70,14 +69,14 @@ class App extends Component {
     	<BrowserRouter>
 	      <div>
 	        <Switch>
-		        <Route exact path="/" render={(props) => (
+		        <Route exact path={process.env.PUBLIC_URL + "/"} render={(props) => (
 		        	<div className="App flex flex-column items-center avenir">
 		        		<SearchBar getCity={ this.getCity } onInputChange={ this.onInputChange } />
 			        	<WeatherWrapper weatherArray={ weatherArray } removeCity={ this.removeCity } />
 		        	</div>
 		        	)} 
 		        />
-		        <Route path="/:city" component={WeatherDetailed} />
+		        <Route path={process.env.PUBLIC_URL + "/:city"} component={WeatherDetailed} />
 	        </Switch>
 	      </div>
       </BrowserRouter>

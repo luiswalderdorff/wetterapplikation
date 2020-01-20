@@ -7,7 +7,7 @@ class WeatherDetailedComponent extends Component {
 		const { city } = this.props;
 		return(
 			<div>
-				<Link to={"/"}>
+				<Link to={process.env.PUBLIC_URL + "/"}>
 						<h1 className="dib ml3">&larr;</h1>
 				</Link>
 				<div className="flex-wrap items-center pa3 justify-around ba ma3 weather-component detailed-view br3">
