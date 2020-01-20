@@ -25,7 +25,6 @@ class WeatherDetailed extends Component {
 	}
 
 	render() {
-		const city = this.city;
 	/*Only renders this once a city name is fetched, to avoid errors*/
 		if (this.state.weather) {
 			const {list} = this.state.weather;
@@ -91,9 +90,9 @@ class WeatherDetailed extends Component {
 					</div>
 				</div>
 			)
-		} else if (city) {
+		} else if (this.city) {
 			return (
-				<WeatherDetailedComponent city={city} />
+				<WeatherDetailedComponent city={this.city} />
 			)
 		} else {
 			return (
