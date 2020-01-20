@@ -10,13 +10,16 @@ class WeatherDetailed extends Component {
 	}
 	// Used to switch from simple to detailed side
 	getCity = () => {
-		const paramCity = this.props.match.params.city;
-		fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${paramCity}&units=metric&lang=de&APPID=761b91c920e9201fba7da16e3aa16206`)
+		let paramCity = "";
+		paramCity = this.props.match.params.city;
+		if (paramCity.length > 0) {
+			fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${paramCity}&units=metric&lang=de&APPID=761b91c920e9201fba7da16e3aa16206`)
 			.then(response => response.json())
 			.then(response => {
 				this.setState({ weather: response });
 			})
 			.catch(err => console.log(err));
+		}
 	}
 
 	componentDidMount() {
@@ -25,7 +28,7 @@ class WeatherDetailed extends Component {
 	}
 
 	render() {
-		//const {city} = this.props.location.state;
+		const {city} = this.props.location.state;
 	/*Only renders this once a city name is fetched, to avoid errors*/
 		if (this.state.weather) {
 			const {list} = this.state.weather;
@@ -91,9 +94,9 @@ class WeatherDetailed extends Component {
 					</div>
 				</div>
 			)
-		} else if (this.city) {
+		} else if (city) {
 			return (
-				<WeatherDetailedComponent city={this.city} />
+				<WeatherDetailedComponent city={city} />
 			)
 		} else {
 			return (
