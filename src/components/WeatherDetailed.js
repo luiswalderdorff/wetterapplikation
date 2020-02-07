@@ -31,7 +31,7 @@ class WeatherDetailed extends Component {
 			return(
 				<div>
 					<WeatherDetailedComponent city={this.city} />
-					<div className="flex flex-wrap justify-around">
+					<div className="detailed-days">
 						{list ? list.map(function (listItem, index) {
 							let unix_timestamp = listItem.dt;
 							// Create a new JavaScript Date object based on the timestamp

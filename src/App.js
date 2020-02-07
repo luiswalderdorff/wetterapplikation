@@ -70,7 +70,7 @@ class App extends Component {
 	      <div>
 	        <Switch>
 		        <Route exact path={process.env.PUBLIC_URL + "/"} render={(props) => (
-		        	<div className="App flex flex-column items-center avenir">
+		        	<div className="App">
 		        		<SearchBar getCity={ this.getCity } onInputChange={ this.onInputChange } />
 			        	<WeatherWrapper weatherArray={ weatherArray } removeCity={ this.removeCity } />
 		        	</div>
