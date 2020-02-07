@@ -132,6 +132,12 @@ input::placeholder{
 	justify-content: space-evenly;
 }
 
+@supports (-ms-ime-align:auto) {
+    .detailed-days {
+        justify-content: space-between;
+    }
+}
+
 @media (min-width: 768px) {
 	
 	.weather-wrapper {
