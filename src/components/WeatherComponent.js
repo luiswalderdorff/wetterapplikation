@@ -18,7 +18,7 @@ class WeatherComponent extends Component {
 				<div className="component-top">
 					<div></div>
 					<div>{ city.name }</div>
-					<div onClick={() => removeCity(index)}>×</div>
+					<div onClick={() => removeCity(index)} className="remove">×</div>
 				</div>
 				<div className="component-bottom">
 					<Link to={{

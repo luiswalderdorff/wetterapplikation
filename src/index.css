@@ -179,4 +179,22 @@ input::placeholder{
 	.weather-component {
 		width: 15%;
 	}
+
+	.detailed-day {
+		width: 15%;
+	}
+
+	.detailed-basics {
+		justify-content: space-around;
+	}
+
+	.remove {
+		visibility: hidden;
+		cursor: pointer;
+	}
+
+	.weather-component:hover .remove {
+		visibility: visible;
+	}
+
 }
